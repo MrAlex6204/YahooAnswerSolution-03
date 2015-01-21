@@ -5,7 +5,11 @@
 
 	<script type="text/javascript">
 	var imgIndex= -1; //This variable contains the current Index from the lst.
-
+	
+	/*
+	This Json contains the url to load on the img tag & a name field of the current page.
+	Event we could add aditional info, like a link to the page etc.
+	*/
 	var lstImg = [
 					{"pictureUrl":"http://k37.kn3.net/45B11B1BC.gif","name":"Jake"},
 					{"pictureUrl":"http://24.media.tumblr.com/3332e201954f68fb5bbe09b970990eb6/tumblr_mg0rvcoabd1rt0dnxo1_500.gif","name":"Finn"},
@@ -20,33 +24,31 @@
 	}
 
 	function loadContent(){
-		var imgCtx = $('imgContainer');
-		var textDesc = $('imgDescription');	
+		//This function will populate the content of the current index from the list.
+		var imgCtx = $('imgContainer');//Find and get the object img tag by id name
+		var textDesc = $('imgDescription');//Find and get the object  span tag by id
 		
-		if(imgIndex == lstImg.length){
-			imgIndex = 0;
-		}else if(imgIndex == -1){
-			imgIndex = lstImg.length-1;
+		
+		if(imgIndex == lstImg.length){//Check before if is the las page.
+			imgIndex = 0;//go to the first page
+		}else if(imgIndex == -1){//Check when clicked backward when it was on  the first page
+			imgIndex = lstImg.length-1;//Go to the last page
 		}
 
 
-		imgCtx.src = lstImg[imgIndex].pictureUrl;
-		textDesc.innerHTML = lstImg[imgIndex].name;
-
-		console.log('Index : '+ imgIndex);
-		console.log('Url : '+lstImg[imgIndex].pictureUrl);
-		console.log('Name:'+ lstImg[imgIndex].name);
-
+		imgCtx.src = lstImg[imgIndex].pictureUrl;//Set the url from the current lst position
+		textDesc.innerHTML = lstImg[imgIndex].name;//set the name from the current lst position
+		
 	}
 
-	function moveBack(){
-		imgIndex--;		
-		loadContent();
+	function moveBack(){//Function to move back in the lst
+		imgIndex--;//Decrease a position in the current lst		
+		loadContent();//load the current content
 	}
 
-	function moveNext(){
-		imgIndex++;		
-		loadContent();
+	function moveNext(){//Function to move next in the lst
+		imgIndex++;//Increase a position in the current list		
+		loadContent();//load the content
 	}
 
 
