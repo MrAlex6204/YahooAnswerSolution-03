@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Js Picture slide</title>
+
+	<script type="text/javascript">
+	var imgIndex= -1; //This variable contains the current Index from the lst.
+
+	var lstImg = [
+					{"pictureUrl":"http://k37.kn3.net/45B11B1BC.gif","name":"Jake"},
+					{"pictureUrl":"http://24.media.tumblr.com/3332e201954f68fb5bbe09b970990eb6/tumblr_mg0rvcoabd1rt0dnxo1_500.gif","name":"Finn"},
+					{"pictureUrl":"http://media.giphy.com/media/jnkrxDnokNNdu/giphy.gif","name":"Bmo"},
+					{"pictureUrl":"http://media.tumblr.com/0fcf189c4a5ccc19eba5c282d17bfa83/tumblr_inline_n8d38rCO0W1qew5ie.gif","name":"Ice King"},
+					{"pictureUrl":"http://img1.wikia.nocookie.net/__cb20121211200111/regularshow/es/images/thumb/9/95/Regular-show_picture_r423igby_2_1280x1024.jpg/500px-Regular-show_picture_r423igby_2_1280x1024.jpg","name":"Rigby"},
+					{"pictureUrl":"http://data2.whicdn.com/images/33332372/large.jpg","name":"Rigby & Mordecai"}
+				 ];
+
+	function $(idName){
+		return document.getElementById(idName);
+	}
+
+	function loadContent(){
+		var imgCtx = $('imgContainer');
+		var textDesc = $('imgDescription');	
+		
+		if(imgIndex == lstImg.length){
+			imgIndex = 0;
+		}else if(imgIndex == -1){
+			imgIndex = lstImg.length-1;
+		}
+
+
+		imgCtx.src = lstImg[imgIndex].pictureUrl;
+		textDesc.innerHTML = lstImg[imgIndex].name;
+
+		console.log('Index : '+ imgIndex);
+		console.log('Url : '+lstImg[imgIndex].pictureUrl);
+		console.log('Name:'+ lstImg[imgIndex].name);
+
+	}
+
+	function moveBack(){
+		imgIndex--;		
+		loadContent();
+	}
+
+	function moveNext(){
+		imgIndex++;		
+		loadContent();
+	}
+
+
+
+	</script>
+
+	<style type="text/css">
+	.descriptionStyle{
+		text-align: center;;
+		background-color:black;
+		width:100%;
+		height:25px;
+		display:block;
+		opacity:0.5;
+		position:absolute;
+		top:0%;		
+		color:whitesmoke;
+	}
+	.buttonsPanelStyle{
+		background-color:transparent;				
+		width:100%;
+		height:25px;
+		display:block;		
+		position:absolute;
+		bottom:10px;				
+	}
+	</style>
+</head>
+<body backcolor="black">
+<div style="width:500px;position:relative;">
+	<img id="imgContainer" src="" width="500" height="400">
+	<span class="descriptionStyle" id="imgDescription">[DESCRIPTION]</span><br>
+	<span class="buttonsPanelStyle">
+		<center>		
+			<input onclick="moveBack();" type="button" value="Back"/>
+			<input onclick="moveNext();" type="button" value="Next"/>
+		</center>
+	</span>	
+</div> 
+
+<script type="text/javascript">
+	moveNext();
+</script>
+</body>
+</html>
