@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Array en Js</title>
+	</head>
+	<script type="text/javascript">
+		var end = ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"];
+		var urlDestino = "http://www.google.com.mx";//Definimos una direccion
+
+		function preguntarPassword(){
+			var respuesta = prompt("Passoword:");
+			console.log(" Respuesta : " + respuesta.toUpperCase().trim());
+			for(index = 0;index<=end.length-1;index++){
+
+				/*
+					Verificamos si lo que escribio es igual a cualquiera
+					de las palabras que estan dentro del array.
+					Pero como Js es sensible a mayusculas, convertimos el texto
+					a mayusculas y eliminamos espacios vacios con la funcion trim()
+				*/
+				if(end[index].toUpperCase().trim() == respuesta.toUpperCase().trim()){
+					//Redireccionar la pagina si coicide;
+					window.location = urlDestino;
+				}
+			
+			}
+			//Mostramos este mensage en caso de que no se redireccione
+			alert("Password invalido");
+
+		}
+	</script>
+<body>
+<input type="button" value="Preguntar Password" onclick="preguntarPassword()"/>
+</body>
+</html>
